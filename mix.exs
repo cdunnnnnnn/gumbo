@@ -41,7 +41,8 @@ defmodule Gumbo.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:absinthe, "~> 1.4"},
-      {:absinthe_plug, "~> 1.4"},
+      {:absinthe_plug,
+       git: "https://github.com/absinthe-graphql/absinthe_plug.git", override: true},
       {:cowboy, "~> 1.0"},
       {:plug_cowboy, "~> 1.0"}
     ]

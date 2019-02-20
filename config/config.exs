@@ -14,8 +14,10 @@ config :gumbo, GumboWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "ZaK0erEnpLxoGbnUmv4Oaek5YM+KO8inXM79YzPGxUURUNToAr1yrYfwjxmabRB9",
   render_errors: [view: GumboWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Gumbo.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Gumbo.PubSub, adapter: Phoenix.PubSub.PG2]
+
+# Config Phoenix JSON encoding
+config :phoenix, :json_encoding, Jason
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +26,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

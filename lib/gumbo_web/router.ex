@@ -16,7 +16,7 @@ defmodule GumboWeb.Router do
   if Mix.env() == :dev,
     do:
       forward(
-        "graphiql",
+        "/graphiql",
         Absinthe.Plug.GraphiQL,
         schema: GumboWeb.Schema
       )
