@@ -11,7 +11,7 @@ defmodule Gumbo.Application do
       # Start the Ecto repository
       supervisor(Gumbo.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(GumboWeb.Endpoint, []),
+      supervisor(GumboWeb.Endpoint, [])
       # Start your own worker by calling: Gumbo.Worker.start_link(arg1, arg2, arg3)
       # worker(Gumbo.Worker, [arg1, arg2, arg3]),
     ]
