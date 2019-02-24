@@ -11,6 +11,8 @@ defmodule GumboWeb.Router do
 
   pipeline :api do
     plug(:accepts, ["json"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
   end
 
   if Mix.env() == :dev,
@@ -28,8 +30,7 @@ defmodule GumboWeb.Router do
     get("/", PageController, :index)
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", GumboWeb do
-  #   pipe_through :api
-  # end
+  pipeline :force_trailing_slash do
+    plug(GumboWeb.ForceTrailingSlashPlug)
+  end
 end
