@@ -1,1 +1,3 @@
-- [ ] Finish ToDo App [tutorials](https://youtu.be/G8xLAjxrtqw)
+- [X] Finish ToDo App [tutorials](https://youtu.be/G8xLAjxrtqw)
+- [ ] Migrating a Phoenix and Elm app from REST to GraphQL [tutorial](https://paulfioravanti.com/blog/2018/03/07/migrating-a-phoenix-and-elm-app-from-rest-to-graphql/)
+- [ ] Setup API for recipes
