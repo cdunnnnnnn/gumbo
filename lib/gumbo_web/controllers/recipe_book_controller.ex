@@ -1,4 +1,4 @@
-defmodule GumboWeb.PageController do
+defmodule GumboWeb.RecipeBookController do
   use GumboWeb, :controller
 
   def index(conn, _params) do

@@ -11,23 +11,21 @@ defmodule GumboWeb.Router do
 
   pipeline :api do
     plug(:accepts, ["json"])
-    plug(:fetch_session)
-    plug(:fetch_flash)
   end
 
-  if Mix.env() == :dev,
-    do:
-      forward(
-        "/graphiql",
-        Absinthe.Plug.GraphiQL,
-        schema: GumboWeb.Schema
-      )
+  scope "/api", GumboWeb do
+    pipe_through(:api)
+
+    scope "/v1", V1 do
+      resources("/recipes", RecipeController, only: [:index, :show])
+    end
+  end
 
   scope "/", GumboWeb do
     # Use the default browser stack
     pipe_through(:browser)
 
-    get("/", PageController, :index)
+    get("/*path", RecipeBookController, :index)
   end
 
   pipeline :force_trailing_slash do

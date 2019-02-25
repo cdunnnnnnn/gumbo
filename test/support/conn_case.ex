@@ -12,32 +12,28 @@ defmodule GumboWeb.ConnCase do
   """
 
   use ExUnit.CaseTemplate
-
-  import GumboWeb.TestHelpers, only: [user_params: 1]
+  alias Ecto.Adapters.SQL.Sandbox
+  alias Phoenix.ConnTest
+  alias Gumbo.Repo
 
   using do
     quote do
+      # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      import GumboWeb.{ConnCase, Router.Helpers, TestHelpers}
+      import GumboWeb.Router.Helpers
 
+      # The default endpoint for testing
       @endpoint GumboWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Gumbo.Repo)
+    :ok = Sandbox.checkout(Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Gumbo.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    {:ok, conn: ConnTest.build_conn()}
   end
-
-  # @spec login_as(String.t()) :: GumboWeb.Admin.User.t()
-  # def login_as(email) do
-  #   params = user_params(email: email, permissions: [%{name: "USER_CREATE"}])
-  #   {:ok, user} = GumboWeb.Accounts.register_user(params)
-  #   user
-  # end
 end

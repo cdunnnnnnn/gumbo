@@ -1,4 +1,4 @@
-defmodule GumboWeb.PageControllerTest do
+defmodule GumboWeb.RecipeBookControllerTest do
   use GumboWeb.ConnCase
 
   test "GET /", %{conn: conn} do
